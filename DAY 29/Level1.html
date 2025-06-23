@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animated Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+      font-family: sans-serif;
+    }
+
+    .slider {
+      width: 600px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 6s infinite;
+    }
+
+    .slide {
+      width: 100%;
+      height: 300px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .slide:nth-child(1) { background-color: #e74c3c; }
+    .slide:nth-child(2) { background-color: #3498db; }
+    .slide:nth-child(3) { background-color: #2ecc71; }
+
+    @keyframes slide {
+      0% { transform: translateX(0%); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slides">
+    <div class="slide">Slide 1</div>
+    <div class="slide">Slide 2</div>
+    <div class="slide">Slide 3</div>
+  </div>
+</div>
+
+</body>
+</html>

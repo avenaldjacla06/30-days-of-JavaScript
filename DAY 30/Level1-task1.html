@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countries Animation</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    .country {
+      width: 150px;
+      margin: 10px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .country:hover {
+      transform: scale(1.1);
+      background-color: #dff0d8;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan"];
+
+  countries.forEach(country => {
+    const div = document.createElement('div');
+    div.className = 'country';
+    div.textContent = country;
+    document.body.appendChild(div);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DOM Mini Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .wrapper {
+      width: 600px;
+      margin: auto;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+      padding: 10px;
+      color: white;
+      font-size: 18px;
+    }
+    #time {
+      display: inline-block;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Asabeneh Yetayeh challenges in <span id="year">2020</span></h1>
+    <h2>30DaysOfJavaScript Challenge</h2>
+    <div id="time"></div>
+    <ul>
+      <li>30DaysOfPython Challenge Done</li>
+      <li>30DaysOfJavaScript Challenge Ongoing</li>
+      <li>30DaysOfReact Challenge Coming</li>
+      <li>30DaysOfFullStack Challenge Coming</li>
+      <li>30DaysOfDataAnalysis Challenge Coming</li>
+      <li>30DaysOfReactNative Challenge Coming</li>
+      <li>30DaysOfMachineLearning Challenge Coming</li>
+    </ul>
+  </div>
+
+  <script>
+    const year = document.getElementById('year');
+    const time = document.getElementById('time');
+    const listItems = document.querySelectorAll('li');
+
+    // Function to generate random RGB color
+    function getRandomColor() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Change year color every second
+    setInterval(() => {
+      year.style.color = getRandomColor();
+    }, 1000);
+
+    // Update time and background every second
+    setInterval(() => {
+      const now = new Date();
+      time.textContent = now.toLocaleString();
+      time.style.backgroundColor = getRandomColor();
+    }, 1000);
+
+    // Assign background color based on challenge status
+    listItems.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (text.includes('done')) {
+        item.style.backgroundColor = 'green';
+      } else if (text.includes('ongoing')) {
+        item.style.backgroundColor = 'yellow';
+        item.style.color = 'black';
+      } else if (text.includes('coming')) {
+        item.style.backgroundColor = 'red';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>World Countries</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+    .countries-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .country {
+      width: 150px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌍 World Countries List</h1>
+  <div class="countries-container" id="countriesContainer"></div>
+
+  <script>
+    const countries = ["Philippines", "Japan", "South Korea", "United States", "Canada", "Brazil", "Germany", "France", "India", "China", "Russia", "Italy", "Spain", "Australia", "Mexico", "Indonesia", "Vietnam", "Thailand", "Malaysia", "Egypt"];
+
+    const container = document.getElementById('countriesContainer');
+
+    countries.forEach(country => {
+      const div = document.createElement('div');
+      div.className = 'country';
+      div.textContent = country.toUpperCase();
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>

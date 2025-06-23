@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bar Graph Visualization</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    .bar-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 800px;
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .label {
+      width: 150px;
+    }
+
+    .bar-visual {
+      height: 30px;
+      background-color: orange;
+      margin: 0 10px;
+    }
+
+    .value {
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Top 10 Most Populated Countries</h2>
+  <div class="bar-container" id="populationChart"></div>
+
+  <h2>Top 10 Most Spoken Languages</h2>
+  <div class="bar-container" id="languageChart"></div>
+
+  <script>
+    const countries = [
+      { name: 'China', population: 1444216107 },
+      { name: 'India', population: 1393409038 },
+      { name: 'USA', population: 332915073 },
+      { name: 'Indonesia', population: 276361783 },
+      { name: 'Pakistan', population: 225199937 },
+      { name: 'Brazil', population: 213993437 },
+      { name: 'Nigeria', population: 211400708 },
+      { name: 'Bangladesh', population: 166303498 },
+      { name: 'Russia', population: 145912025 },
+      { name: 'Mexico', population: 130262216 }
+    ];
+
+    const languages = [
+      { name: 'English', speakers: 1500000000 },
+      { name: 'Mandarin', speakers: 1117000000 },
+      { name: 'Hindi', speakers: 602000000 },
+      { name: 'Spanish', speakers: 559000000 },
+      { name: 'French', speakers: 274000000 },
+      { name: 'Arabic', speakers: 274000000 },
+      { name: 'Bengali', speakers: 273000000 },
+      { name: 'Russian', speakers: 258000000 },
+      { name: 'Portuguese', speakers: 258000000 },
+      { name: 'Urdu', speakers: 230000000 }
+    ];
+
+    function renderBarGraph(data, containerId, maxValue, valueKey) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+
+      data.forEach(item => {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+
+        const label = document.createElement('div');
+        label.className = 'label';
+        label.textContent = item.name;
+
+        const barVisual = document.createElement('div');
+        barVisual.className = 'bar-visual';
+        const widthPercent = (item[valueKey] / maxValue) * 100;
+        barVisual.style.width = `${widthPercent}%`;
+
+        const value = document.createElement('div');
+        value.className = 'value';
+        value.textContent = item[valueKey].toLocaleString();
+
+        bar.appendChild(label);
+        bar.appendChild(barVisual);
+        bar.appendChild(value);
+
+        container.appendChild(bar);
+      });
+    }
+
+    // Max values for scaling bars
+    const maxPopulation = countries[0].population;
+    const maxSpeakers = languages[0].speakers;
+
+    renderBarGraph(countries, 'populationChart', maxPopulation, 'population');
+    renderBarGraph(languages, 'languageChart', maxSpeakers, 'speakers');
+  </script>
+</body>
+</html>

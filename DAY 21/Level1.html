@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Level 1 DOM</title>
+</head>
+<body>
+  <p id="p1">Paragraph 1</p>
+  <p id="p2">Paragraph 2</p>
+  <p id="p3">Paragraph 3</p>
+  <p id="p4">Paragraph 4</p>
+
+  <script>
+    // Get the first paragraph using tag name
+    const firstPara = document.querySelector('p');
+    console.log('First paragraph:', firstPara.textContent);
+
+    // Get each paragraph by ID
+    const para1 = document.querySelector('#p1');
+    const para2 = document.querySelector('#p2');
+    const para3 = document.querySelector('#p3');
+    const para4 = document.querySelector('#p4');
+
+    console.log(para1.textContent, para2.textContent, para3.textContent, para4.textContent);
+
+    // Get all p tags
+    const allParagraphs = document.querySelectorAll('p');
+
+    // Loop through and log text content
+    allParagraphs.forEach((p, i) => {
+      console.log(`Paragraph ${i + 1}:`, p.textContent);
+    });
+
+    // Set text content of 4th paragraph
+    para4.textContent = 'Fourth Paragraph';
+
+    // Set id and class attribute using different methods
+    para1.setAttribute('class', 'class1');
+    para2.className = 'class2';
+    para3.id = 'para3-new';
+    para4.setAttribute('id', 'para4-new');
+  </script>
+</body>
+</html>

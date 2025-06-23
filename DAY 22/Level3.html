@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Challenge Info</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 span {
+      font-size: 24px;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .datetime {
+      padding: 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+      border-radius: 5px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 15px;
+      margin: 5px 0;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Asabeneh Yetayeh challenges in <span id="year">2020</span></h1>
+    <h2>30DaysOfJavaScript Challenge</h2>
+    <div class="datetime" id="datetime"></div>
+    <ul id="challengeList"></ul>
+  </div>
+
+  <script>
+    const year = document.getElementById('year');
+    const datetime = document.getElementById('datetime');
+    const challengeList = document.getElementById('challengeList');
+
+    const challenges = [
+      { name: '30DaysOfPython Challenge', status: 'Done' },
+      { name: '30DaysOfJavaScript Challenge', status: 'Ongoing' },
+      { name: '30DaysOfReact Challenge', status: 'Coming' },
+      { name: '30DaysOfFullStack Challenge', status: 'Coming' },
+      { name: '30DaysOfDataAnalysis Challenge', status: 'Coming' },
+      { name: '30DaysOfReactNative Challenge', status: 'Coming' },
+      { name: '30DaysOfMachineLearning Challenge', status: 'Coming' },
+    ];
+
+    function getStatusColor(status) {
+      if (status === 'Done') return 'green';
+      if (status === 'Ongoing') return 'yellow';
+      return 'red';
+    }
+
+    challenges.forEach(challenge => {
+      const li = document.createElement('li');
+      li.textContent = `${challenge.name} ${challenge.status}`;
+      li.style.backgroundColor = getStatusColor(challenge.status);
+      challengeList.appendChild(li);
+    });
+
+    function updateColors() {
+      year.style.backgroundColor = getRandomColor();
+      datetime.style.backgroundColor = getRandomColor();
+    }
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    setInterval(() => {
+      const now = new Date();
+      datetime.textContent = now.toLocaleString();
+      updateColors();
+    }, 1000);
+  </script>
+</body>
+</html>

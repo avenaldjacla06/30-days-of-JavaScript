@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input { display: block; margin-bottom: 10px; padding: 8px; width: 300px; }
+    .error { color: red; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+<h2>Signup Form</h2>
+<form id="signupForm">
+  <input type="text" id="username" placeholder="Username" required>
+  <div class="error" id="usernameError"></div>
+  <input type="email" id="email" placeholder="Email" required>
+  <div class="error" id="emailError"></div>
+  <input type="password" id="password" placeholder="Password" required>
+  <div class="error" id="passwordError"></div>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const form = document.getElementById('signupForm');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    let valid = true;
+
+    const username = document.getElementById('username').value;
+    const usernameError = document.getElementById('usernameError');
+    const email = document.getElementById('email').value;
+    const emailError = document.getElementById('emailError');
+    const password = document.getElementById('password').value;
+    const passwordError = document.getElementById('passwordError');
+
+    // Regex patterns
+    const usernamePattern = /^[a-zA-Z]{3,}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!usernamePattern.test(username)) {
+      usernameError.textContent = "Username must be at least 3 letters.";
+      valid = false;
+    } else {
+      usernameError.textContent = "";
+    }
+
+    if (!emailPattern.test(email)) {
+      emailError.textContent = "Invalid email format.";
+      valid = false;
+    } else {
+      emailError.textContent = "";
+    }
+
+    if (!passwordPattern.test(password)) {
+      passwordError.textContent = "Password must be 8+ characters, include a digit and uppercase.";
+      valid = false;
+    } else {
+      passwordError.textContent = "";
+    }
+
+    if (valid) {
+      alert("Form submitted successfully!");
+      form.reset();
+    }
+  });
+</script>
+
+</body>
+</html>
